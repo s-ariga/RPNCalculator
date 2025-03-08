@@ -6,6 +6,8 @@
 # テキストファイルに逆ポーランド記法で計算(四則演算)を用意して、
 # $ cat TEXT.txt | ./RpmCalculator
 
+# !: 今のところ、入力にエラーはご遠慮ください
+
 import strutils, sequtils
 
 # スタックを表現するためのtype
@@ -54,7 +56,8 @@ func calc( a, b: float, ope: string):float =
 func processStack(stack: var Stack, calcStack: var CalcStack): float =
   for val in stack.data:
 
-
+    # floatか演算記号(+-*/)かによって、計算用スタックに積むか、演算実行かを決める
+    # 下のifはfloatのstringの場合。最大１つの小数点を持つ半角数字かどうか
     if stack.data[stack.counter].all(isDigit) or (stack.data[stack.counter].count('.') == 1 and stack.data[stack.counter].allIt(it.isDigit or it == '.')):
       calcStack.val.add(parseFloat(stack.data[stack.counter]))
       stack.counter += 1
