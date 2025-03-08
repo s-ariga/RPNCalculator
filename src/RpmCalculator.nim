@@ -22,7 +22,7 @@ type
     counter: int
 
 
-func readData(stream: File = stdin): seq[string] = 
+proc readData(stream: File = stdin): seq[string] = 
   # 標準入力を１行読み込む(改行は削除)
   # それぞれのトークンがスペース区切りなので、splitしてstring配列にする
   let inputStr = readLine(stdin)
