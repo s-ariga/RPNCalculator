@@ -1,0 +1,7 @@
+# Seiichi Ariga <seiichi.ariga@gmail.com>
+
+nimcache/
+nimblecache/
+htmldocs/
+
+*.exe
